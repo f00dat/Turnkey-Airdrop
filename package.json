@@ -1,0 +1,17 @@
+{
+    "name": "sepolia-bulk-sender",
+    "version": "1.0.0",
+    "type": "module",
+    "dependencies": {
+        "dotenv": "^16.6.1",
+        "ethers": "^6.15.0"
+    },
+    "scripts": {
+        "start": "node send.js"
+    },
+    "main": "send.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": ""
+}
