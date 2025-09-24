@@ -57,7 +57,7 @@ O script utiliza Node.js (que já inclui o NPM).
 Instale via conda-forge:
 
 ```bash
-conda install -c conda-forge nodejs -y
+conda install -c conda-forge nodejs git -y
 ```
 
 Verifique se está funcionando:
@@ -69,7 +69,21 @@ npm -v
 
 ---
 
-3. ▶️ Executar o Script
+4. Clonar o Repositório:
+
+```bash
+Git clone https://github.com/f00dat/Turnkey-Airdrop.git
+```
+
+Entre na pasta:
+
+```bash
+cd Turnkey-Airdrop
+```
+
+---
+
+5. ▶️ Executar o Script
 
 Método 1 – Usar npm start:
 
