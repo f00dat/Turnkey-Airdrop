@@ -1,4 +1,4 @@
-# 🚀 Script Turnkey – Guia de Instalação e Execução
+# 🤖 Script Turnkey – Guia de Instalação e Execução
 
 Este repositório documenta os passos necessários para instalar, configurar e executar o **Script Turnkey** em um ambiente isolado com **Anaconda** e **Node.js/NPM**.
 
