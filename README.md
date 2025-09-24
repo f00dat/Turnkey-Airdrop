@@ -40,13 +40,13 @@ Ative o ambiente:
 Windows (Anaconda Prompt):
 
 ```bash
-👉 conda activate turnkey_env
+conda activate turnkey_env
 ```
 
 Linux/Mac:
 
 ```bash
-👉 source activate turnkey_env
+source activate turnkey_env
 ```
 ---
 
@@ -57,14 +57,14 @@ O script utiliza Node.js (que já inclui o NPM).
 Instale via conda-forge:
 
 ```bash
-👉 conda install -c conda-forge nodejs -y
+conda install -c conda-forge nodejs -y
 ```
 
 Verifique se está funcionando:
 
 ```bash
-👉 node -v
-👉 npm -v
+node -v
+npm -v
 ```
 
 ---
@@ -74,13 +74,13 @@ Verifique se está funcionando:
 Método 1 – Usar npm start:
 
 ```bash
-👉 npm start
+npm start
 ```
 
 Método 2 – Executar manualmente:
 
 ```bash
-👉 node send.js
+node send.js
 ```
 
 ---
@@ -105,7 +105,7 @@ Recomendado (Caso queira agendar diretamente via Powershell):
 
 ```bash
 
-👉$Action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command `"& 'C:\Users\SEU_USUARIO\anaconda3\Scripts\conda.exe' run -n turnkey_env npm start`""
+$Action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command `"& 'C:\Users\SEU_USUARIO\anaconda3\Scripts\conda.exe' run -n turnkey_env npm start`""
 $Trigger = New-ScheduledTaskTrigger -Daily -At 12:00
 Register-ScheduledTask -Action $Action -Trigger $Trigger -TaskName "TurnkeyScript" -Description "Executa o npm start no ambiente turnkey_env todos os dias ao meio-dia"
 ```
@@ -115,13 +115,13 @@ Register-ScheduledTask -Action $Action -Trigger $Trigger -TaskName "TurnkeyScrip
 Abra o cron:
 
 ```bash
-👉 crontab -e
+crontab -e
 ```
 
 Adicione a linha para rodar todos os dias às 12h:
 
 ```bash
-👉 0 12 * * * /home/SEU_USUARIO/anaconda3/envs/turnkey_env/bin/npm start
+0 12 * * * /home/SEU_USUARIO/anaconda3/envs/turnkey_env/bin/npm start
 ```
 
 ---
