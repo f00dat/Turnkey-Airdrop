@@ -66,6 +66,11 @@ Verifique se está funcionando:
 node -v
 npm -v
 ```
+Instale também o Etherjs (Será necessário para rodar o Script):
+
+```bash
+npm install ethers@1.6
+```
 
 ---
 
