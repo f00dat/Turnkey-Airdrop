@@ -105,7 +105,7 @@ node send.js
 
 ---
 
-5. ⏰ Execução Automática
+6. ⏰ Execução Automática
 
 🖥️ Windows – Agendador de Tarefas
 
