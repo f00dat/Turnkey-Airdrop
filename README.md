@@ -69,7 +69,8 @@ npm -v
 Instale também o Ethers.js (Será necessário para rodar o Script):
 
 ```bash
-npm install ethers@1.6
+npm init -y
+npm i ethers@6
 ```
 
 ---
@@ -77,7 +78,7 @@ npm install ethers@1.6
 4. Clonar o Repositório:
 
 ```bash
-Git clone https://github.com/f00dat/Turnkey-Airdrop.git
+git clone https://github.com/f00dat/Turnkey-Airdrop.git
 ```
 
 Entre na pasta:
