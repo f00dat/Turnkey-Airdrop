@@ -70,7 +70,7 @@ Instale também o Ethers.js (Será necessário para rodar o Script):
 
 ```bash
 npm init -y
-npm i ethers@6
+npm i dotenv ethers@6
 ```
 
 ---
