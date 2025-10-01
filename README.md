@@ -50,7 +50,7 @@ source activate turnkey_env
 ```
 ---
 
-3. 📦 Instalar Node.js e NPM no Ambiente
+## 3. 📦 Instalar Node.js e NPM no Ambiente
 
 O script utiliza Node.js (que já inclui o NPM).
 
@@ -75,7 +75,7 @@ npm i ethers@6
 
 ---
 
-4. Clonar o Repositório:
+## 4. Clonar o Repositório:
 
 ```bash
 git clone https://github.com/f00dat/Turnkey-Airdrop.git
@@ -89,7 +89,7 @@ cd Turnkey-Airdrop
 
 ---
 
-5. ▶️ Executar o Script
+## 5. ▶️ Executar o Script
 
 Método 1 – Usar npm start:
 
@@ -105,7 +105,7 @@ node send.js
 
 ---
 
-6. ⏰ Execução Automática
+## 6. ⏰ Execução Automática
 
 🖥️ Windows – Agendador de Tarefas
 
