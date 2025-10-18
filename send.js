@@ -1,20 +1,19 @@
-// send.js (ESM) — Sepolia bulk sender com failover, retry, nonce seguro e fee robusta
 import 'dotenv/config';
 import { ethers } from 'ethers';
 
 const {
   PRIVATE_KEY, DEST,
-  TX_PER_DAY = '500',
+  TX_PER_DAY = '10',
   AMOUNT_ETH_MIN = '0.00001',
-  AMOUNT_ETH_MAX = '0.00001',
+  AMOUNT_ETH_MAX = '0.00100',
   GAS_LIMIT = '21000',
   BATCH_SIZE = '10',
   SLEEP_BETWEEN_BATCH_MS = '60000',
   PER_TX_DELAY_MS = '150',
   RETRY_MAX = '4',
   RETRY_BACKOFF_MS = '2000',
-  PRIORITY_GWEI = '1.0',     // tip mínima desejada (gwei)
-  FEE_MULTIPLIER = '1.20',   // cap = baseFee * MULT + tip
+  PRIORITY_GWEI = '1.0',     
+  FEE_MULTIPLIER = '1.20',   
   DRY_RUN = 'false'
 } = process.env;
 
@@ -70,7 +69,7 @@ const randValue = () => {
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 function nonceManager(addr) {
-  const used = new Set(); // nonces usadas neste processo (evita duplicar)
+  const used = new Set();
   return {
     async next() {
       let n = await withRpcRetry(() => provider.getTransactionCount(addr, 'pending'));
@@ -91,7 +90,7 @@ async function sendTxWithRetry(tx, label) {
       return true;
     } catch (e) {
       const msg = (e.shortMessage || e.message || '').toLowerCase();
-      // conflitos de nonce: apenas loga e marca como falha leve (vamos requeue com outra nonce)
+      
       if (msg.includes('nonce has already been used') || msg.includes('nonce too low')) {
         console.warn(`  (skip) ${label}: ${e.shortMessage || e.message}`);
         return false;
@@ -112,16 +111,15 @@ async function main() {
   console.log('RPCs  :', urls.map(mask).join(' | '));
   console.log('Plan  :', `${TXS} tx em batches de ${BATCH}`);
 
-  // cap = baseFee * MULT + tip  (garante cap >= tip)
   const fd    = await withRpcRetry(() => provider.getFeeData());
   const block = await withRpcRetry(() => provider.getBlock('latest'));
 
-  const baseFee = block?.baseFeePerGas ?? ethers.parseUnits('1', 'gwei'); // fallback
+  const baseFee = block?.baseFeePerGas ?? ethers.parseUnits('1', 'gwei'); 
   const tipSuggested = fd.maxPriorityFeePerGas ?? ethers.parseUnits('1', 'gwei');
   const tipMinEnv    = ethers.parseUnits(PRIORITY_GWEI || '1.0', 'gwei');
   const maxPrio      = tipSuggested > tipMinEnv ? tipSuggested : tipMinEnv;
 
-  const multInt = Math.max(100, Math.floor(Number(FEE_MULTIPLIER) * 100)); // >= 1.00
+  const multInt = Math.max(100, Math.floor(Number(FEE_MULTIPLIER) * 100)); 
   const maxFee  = (baseFee * BigInt(multInt)) / 100n + maxPrio;
 
   console.log(
@@ -190,3 +188,4 @@ main().catch(e => {
   console.error(e);
   process.exit(1);
 });
+
