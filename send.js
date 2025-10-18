@@ -1,6 +1,24 @@
 import 'dotenv/config';
 import { ethers } from 'ethers';
 
+const BANNER = `
+ _________________________________________________________________
+|                                                                 |
+|                                                                 |
+|                 Desmistificador de Crypto                       | 
+|                                                                 |
+|                                                                 | 
+|_________________________________________________________________|
+|                                                                 | 
+| Youtube: https://www.youtube.com/@desmistificadordecrypto       |
+| Twitter: https://x.com/desm_de_crypto                           |
+| Canal do Telegram: https://t.me/Desmistificador_de_crypto       | 
+| Grupo do Telegram: https://t.me/+EK-001T9G6E1ZTQ5               |
+|_________________________________________________________________|`;
+console.log(BANNER);
+console.log()
+console.log()
+
 const {
   PRIVATE_KEY, DEST,
   TX_PER_DAY = '10',
@@ -188,4 +206,5 @@ main().catch(e => {
   console.error(e);
   process.exit(1);
 });
+
 
